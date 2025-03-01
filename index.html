@@ -89,13 +89,13 @@
       background-color: #ff7f00;
     }
 
-    /* Move Chat Box to the Right */
+    /* Move Chat Box to the Bottom Right */
     .chat-box {
       background-color: #333;
       padding: 20px;
       border-radius: 10px;
       width: 300px;
-      position: absolute;
+      position: fixed;
       bottom: 20px;
       right: 20px;
       display: flex;
@@ -163,14 +163,14 @@
       <p>ฟีเจอร์พรีเมียม</p>
       <button onclick="signupMira()">สมัครเลย</button>
     </div>
+  </div>
 
-    <!-- AI Chat Section -->
-    <div class="chat-box">
-      <div class="chat-output" id="chat-output">
-        <p>🤖 สวัสดีครับ! ท่านต้องการให้บอททำอะไรครับ?</p>
-      </div>
-      <input type="text" class="chat-input" id="chat-input" placeholder="พิมพ์ข้อความที่นี่..." onkeypress="if(event.key === 'Enter') sendMessage()">
+  <!-- AI Chat Section -->
+  <div class="chat-box">
+    <div class="chat-output" id="chat-output">
+      <p>🤖 สวัสดีครับ! ท่านต้องการให้บอททำอะไรครับ?</p>
     </div>
+    <input type="text" class="chat-input" id="chat-input" placeholder="พิมพ์ข้อความที่นี่..." onkeypress="if(event.key === 'Enter') sendMessage()">
   </div>
 
   <script>
