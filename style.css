@@ -1,41 +1,81 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 20px;
-    background-color: #000; /* พื้นหลังสีดำ */
-    color: #fff; /* ข้อความสีขาว */
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    background-color: #111;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+}
+
+nav {
+    background-color: #007bff;
+    padding: 10px;
+    text-align: center;
+}
+
+nav a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
 }
 
 #chatbox {
-    width: 100%;
-    max-width: 600px;
-    height: 400px;
-    border: 1px solid #444; /* กรอบสีเทาเข้ม */
-    overflow-y: scroll;
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    border-bottom: 1px solid #444;
+}
+
+#chatbox p {
+    margin: 10px 0;
+}
+
+.input-area {
+    display: flex;
     padding: 10px;
-    background-color: #111; /* พื้นหลังช่องแชทสีเทาเข้ม */
-    margin-bottom: 10px;
+    background-color: #222;
 }
 
 #userInput {
-    width: calc(100% - 90px);
-    max-width: 500px;
+    flex: 1;
     padding: 10px;
     font-size: 16px;
-    background-color: #222; /* พื้นหลังช่อง input สีเทาเข้ม */
-    color: #fff; /* ข้อความสีขาว */
-    border: 1px solid #444; /* กรอบสีเทาเข้ม */
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 5px;
+    margin-right: 10px;
 }
 
 button {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #007bff; /* ปุ่มสีน้ำเงิน */
+    background-color: #007bff;
     color: #fff;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #0056b3; /* ปุ่มสีน้ำเงินเข้มเมื่อ hover */
+    background-color: #0056b3;
 }
