@@ -7,22 +7,33 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav>
-        <a href="/">หน้าแรก</a>
-        <a href="/about.html">เกี่ยวกับ</a>
-        <a href="/contact.html">ติดต่อ</a>
-        <a href="/login.html" style="float: right;">เข้าสู่ระบบ</a>
-    </nav>
-    <div id="chatbox">
-        <p><strong>Bot:</strong> สวัสดี! มีอะไรให้ช่วยไหม?</p>
+    <div class="container">
+        <nav>
+            <a href="/">หน้าแรก</a>
+            <a href="/about.html">เกี่ยวกับ</a>
+            <a href="/contact.html">ติดต่อ</a>
+            <a href="/login.html" style="float: right;">เข้าสู่ระบบ</a>
+        </nav>
+        <div id="chatbox">
+            <p><strong>Bot:</strong> สวัสดี! มีอะไรให้ช่วยไหม?</p>
+        </div>
+        <div class="input-area">
+            <input type="text" id="userInput" placeholder="พิมพ์ข้อความที่นี่...">
+            <button onclick="sendMessage()">ส่ง</button>
+        </div>
     </div>
-    <input type="text" id="userInput" placeholder="พิมพ์ข้อความที่นี่...">
-    <button onclick="sendMessage()">ส่ง</button>
 
     <script>
+        // ตรวจสอบการล็อกอิน
+        if (!localStorage.getItem('loggedIn')) {
+            window.location.href = '/login.html';
+        }
+
         async function sendMessage() {
             const userInput = document.getElementById('userInput').value;
             const chatbox = document.getElementById('chatbox');
+            
+            if (!userInput.trim()) return; // ไม่ส่งข้อความว่าง
             
             // แสดงข้อความของผู้ใช้
             chatbox.innerHTML += `<p><strong>คุณ:</strong> ${userInput}</p>`;
