@@ -12,13 +12,13 @@
             <a href="/">หน้าแรก</a>
             <a href="/about.html">เกี่ยวกับ</a>
             <a href="/contact.html">ติดต่อ</a>
-            <a href="/login.html" style="float: right;">เข้าสู่ระบบ</a>
+            <a href="/login.html" class="logout" onclick="logout()">ออกจากระบบ</a>
         </nav>
         <div id="chatbox">
             <p><strong>Bot:</strong> สวัสดี! มีอะไรให้ช่วยไหม?</p>
         </div>
         <div class="input-area">
-            <input type="text" id="userInput" placeholder="พิมพ์ข้อความที่นี่...">
+            <input type="text" id="userInput" placeholder="พิมพ์ข้อความที่นี่..." onkeypress="handleKeyPress(event)">
             <button onclick="sendMessage()">ส่ง</button>
         </div>
     </div>
@@ -29,6 +29,7 @@
             window.location.href = '/login.html';
         }
 
+        // ฟังก์ชันส่งข้อความ
         async function sendMessage() {
             const userInput = document.getElementById('userInput').value;
             const chatbox = document.getElementById('chatbox');
@@ -36,7 +37,7 @@
             if (!userInput.trim()) return; // ไม่ส่งข้อความว่าง
             
             // แสดงข้อความของผู้ใช้
-            chatbox.innerHTML += `<p><strong>คุณ:</strong> ${userInput}</p>`;
+            chatbox.innerHTML += `<p class="user-message"><strong>คุณ:</strong> ${userInput}</p>`;
             
             // ส่งข้อความไปยัง API
             const response = await fetch('/api/chat', {
@@ -48,11 +49,24 @@
             });
             
             const data = await response.json();
-            chatbox.innerHTML += `<p><strong>Bot:</strong> ${data.response}</p>`;
+            chatbox.innerHTML += `<p class="bot-message"><strong>Bot:</strong> ${data.response}</p>`;
             chatbox.scrollTop = chatbox.scrollHeight;
             
             // ล้างช่อง input
             document.getElementById('userInput').value = '';
+        }
+
+        // ฟังก์ชันกด Enter เพื่อส่งข้อความ
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // ฟังก์ชันออกจากระบบ
+        function logout() {
+            localStorage.removeItem('loggedIn');
+            window.location.href = '/login.html';
         }
     </script>
 </body>
